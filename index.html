@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="cookie-popup" id="cookie-popup">
+      <div class="close-icon">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </div>
+        <p>We use cookies to improve
+            <br> your user experience.</p>
+        <button id="accept-cookies">I like Cookies</button>
+    </div>
+
+
+
+
+    <script>
+
+      let closeBtn = document.querySelector(".close-icon");
+      let cookiePopup = document.querySelector(".cookie-popup")
+
+      closeBtn.addEventListener("click",()=>{
+        cookiePopup.classList.toggle("is-active")
+      })
+        function checkCookieConsent() {
+  return localStorage.getItem("cookieConsent") === "true";
+}
+
+
+function showCookiePopup() {
+  const popup = document.getElementById("cookie-popup");
+  popup.style.display = "flex";
+}
+
+
+function acceptCookies() {
+  localStorage.setItem("cookieConsent", "true");
+  const popup = document.getElementById("cookie-popup");
+  // popup.style.display = "none";
+}
+
+
+document
+  .getElementById("accept-cookies")
+  .addEventListener("click", acceptCookies);
+
+
+if (!checkCookieConsent()) {
+  showCookiePopup();
+}
+
+    </script>
+</body>
+</html>
